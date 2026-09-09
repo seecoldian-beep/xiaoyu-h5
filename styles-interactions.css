@@ -1,0 +1,62 @@
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
+html { scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
+body { background: #939b9d; }
+#page { position: relative; width: min(100%, 1080px); margin: 0 auto; overflow: hidden; }
+/* 固定原设计坐标，只对整个画布等比缩放。 */
+#design-canvas {
+  position: absolute; left: 0; top: 0; width: 1080px; height: 13549px;
+  transform: scale(var(--page-scale, 1)); transform-origin: 0 0;
+}
+.scene {
+  position: absolute; left: 0; top: calc(var(--scene-y) * 1px);
+  width: 1080px; height: calc(var(--scene-height) * 1px);
+}
+.scene-final, .scene-backdrop {
+  position: absolute; left: 0; top: 0; width: 1080px; height: 100%; display: block;
+}
+.scene-final { z-index: 100; opacity: 1; pointer-events: none; }
+.layer-stage { position: absolute; inset: 0; opacity: 0; pointer-events: none; background: #fff; }
+#online-world > .layer-stage { background: transparent; }
+.scene[data-render="layers"] > .scene-final { opacity: 0; }
+.scene[data-render="layers"] > .layer-stage { opacity: 1; }
+.psd-layer {
+  position: absolute;
+  left: calc(var(--psd-x) * 1px);
+  top: calc((var(--psd-y) - var(--scene-y)) * 1px);
+  width: calc(var(--psd-width) * 1px); height: calc(var(--psd-height) * 1px);
+  z-index: var(--psd-z); display: block; transform: none;
+  pointer-events: none; user-select: none;
+}
+/* 原手机屏幕上的透明热区；拖动仍由浏览器正常滚动。 */
+.phone-hotzone {
+  position: absolute; left: 112px; top: 518px; width: 814px; height: 1445px;
+  z-index: 200; background: transparent; border: 0; padding: 0; margin: 0;
+  cursor: pointer; touch-action: pan-y; -webkit-tap-highlight-color: transparent;
+}
+.phone-hotzone:disabled { pointer-events: none; }
+.phone-hotzone:focus-visible { outline: 3px solid #4f7eff; outline-offset: -3px; }
+/* 新增点击指示只占用原回复气泡区域，不改变任何美术素材的位置。 */
+.reply-hint {
+  position: absolute;
+  left: calc(var(--psd-x) * 1px);
+  top: calc((var(--psd-y) - var(--scene-y)) * 1px);
+  width: calc(var(--psd-width) * 1px); height: calc(var(--psd-height) * 1px);
+  z-index: 200; border: 0; padding: 0 18px; margin: 0;
+  background: transparent; color: #343b42;
+  font: 40px/1.4 "PingFang SC", "Microsoft YaHei", sans-serif;
+  letter-spacing: 0; text-align: center; cursor: pointer;
+  opacity: 0; pointer-events: none; touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+.reply-hint span { display: block; }
+.reply-hint span:last-child { text-decoration: underline; text-underline-offset: 7px; }
+.reply-hint[data-available="true"] { opacity: 1; pointer-events: auto; }
+.reply-hint:focus-visible { outline: 3px solid #4f7eff; outline-offset: -3px; }
+@media (prefers-reduced-motion: reduce) {
+  .psd-layer { animation: none !important; transition: none !important; }
+}
+.no-script { width: min(100%,1080px); margin: 0 auto; }
+.no-script img { display:block; width:100%; height:auto; }

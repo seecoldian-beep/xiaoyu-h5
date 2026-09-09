@@ -1,0 +1,1643 @@
+{
+  "width": 1080,
+  "height": 13549,
+  "layers": {
+    "24": {
+      "id": 24,
+      "name": "右气泡",
+      "path": "/画板 1/放学路/右气泡",
+      "kind": "smartobject",
+      "x": 27,
+      "y": 8181,
+      "width": 378,
+      "height": 152,
+      "bbox": [
+        27,
+        8181,
+        405,
+        8333
+      ],
+      "zIndex": 0,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-24.png",
+      "originalOpacity": 1.0
+    },
+    "25": {
+      "id": 25,
+      "name": "整个h5的背景",
+      "path": "/画板 1/放学路/整个h5的背景",
+      "kind": "smartobject",
+      "x": -89,
+      "y": 7688,
+      "width": 1199,
+      "height": 2050,
+      "bbox": [
+        -89,
+        7688,
+        1110,
+        9738
+      ],
+      "zIndex": 1,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-25.png",
+      "originalOpacity": 1.0
+    },
+    "26": {
+      "id": 26,
+      "name": "右气泡",
+      "path": "/画板 1/放学路/右气泡",
+      "kind": "smartobject",
+      "x": 64,
+      "y": 8144,
+      "width": 424,
+      "height": 152,
+      "bbox": [
+        64,
+        8144,
+        488,
+        8296
+      ],
+      "zIndex": 2,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-26.png",
+      "originalOpacity": 1.0
+    },
+    "62": {
+      "id": 62,
+      "name": "那你就受着呗 ",
+      "path": "/画板 1/放学路/那你就受着呗 ",
+      "kind": "type",
+      "x": 119,
+      "y": 8159,
+      "width": 310,
+      "height": 108,
+      "bbox": [
+        119,
+        8159,
+        429,
+        8267
+      ],
+      "zIndex": 3,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-62.png",
+      "originalOpacity": 1.0
+    },
+    "23": {
+      "id": 23,
+      "name": "右气泡",
+      "path": "/画板 1/放学路/右气泡",
+      "kind": "smartobject",
+      "x": 399,
+      "y": 7953,
+      "width": 599,
+      "height": 170,
+      "bbox": [
+        399,
+        7953,
+        998,
+        8123
+      ],
+      "zIndex": 4,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-23.png",
+      "originalOpacity": 1.0
+    },
+    "61": {
+      "id": 61,
+      "name": "我这次考试没考好",
+      "path": "/画板 1/放学路/我这次考试没考好",
+      "kind": "type",
+      "x": 438,
+      "y": 7992,
+      "width": 522,
+      "height": 70,
+      "bbox": [
+        438,
+        7992,
+        960,
+        8062
+      ],
+      "zIndex": 5,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-61.png",
+      "originalOpacity": 1.0
+    },
+    "38": {
+      "id": 38,
+      "name": "大家记得完成作业",
+      "path": "/画板 1/放学路/大家记得完成作业",
+      "kind": "type",
+      "x": 252,
+      "y": 9041,
+      "width": 521,
+      "height": 60,
+      "bbox": [
+        252,
+        9041,
+        773,
+        9101
+      ],
+      "zIndex": 6,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-38.png",
+      "originalOpacity": 1.0
+    },
+    "22": {
+      "id": 22,
+      "name": "图层 4",
+      "path": "/画板 1/放学路/图层 4",
+      "kind": "pixel",
+      "x": -30,
+      "y": 8500,
+      "width": 1080,
+      "height": 756,
+      "bbox": [
+        -30,
+        8500,
+        1050,
+        9256
+      ],
+      "zIndex": 7,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-22-blend-if.png",
+      "originalOpacity": 1.0,
+      "blendIfBaked": {
+        "sourceWhite": [
+          241,
+          241
+        ],
+        "sourceBlack": [
+          0,
+          0
+        ],
+        "underlying": [
+          0,
+          0,
+          255,
+          255
+        ]
+      }
+    },
+    "28": {
+      "id": 28,
+      "name": "小羽和同学放学路",
+      "path": "/画板 1/放学路/小羽和同学放学路",
+      "kind": "smartobject",
+      "x": 216,
+      "y": 8549,
+      "width": 625,
+      "height": 937,
+      "bbox": [
+        216,
+        8549,
+        841,
+        9486
+      ],
+      "zIndex": 8,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-28-blend-if.png",
+      "originalOpacity": 1.0,
+      "blendIfBaked": {
+        "sourceWhite": [
+          238,
+          238
+        ],
+        "sourceBlack": [
+          0,
+          0
+        ],
+        "underlying": [
+          0,
+          0,
+          255,
+          255
+        ]
+      }
+    },
+    "5": {
+      "id": 5,
+      "name": "整个h5的背景",
+      "path": "/画板 1/卧室/整个h5的背景",
+      "kind": "smartobject",
+      "x": -2,
+      "y": 3840,
+      "width": 1080,
+      "height": 1926,
+      "bbox": [
+        -2,
+        3840,
+        1078,
+        5766
+      ],
+      "zIndex": 0,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/bedroom/layer-5.png",
+      "originalOpacity": 1.0
+    },
+    "8": {
+      "id": 8,
+      "name": "图层 1",
+      "path": "/画板 1/卧室/图层 1",
+      "kind": "pixel",
+      "x": -27,
+      "y": 4349,
+      "width": 1080,
+      "height": 837,
+      "bbox": [
+        -27,
+        4349,
+        1053,
+        5186
+      ],
+      "zIndex": 1,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "diss",
+      "hasPixels": true,
+      "file": "assets/interaction/environment-8.png",
+      "originalOpacity": 1.0,
+      "blendBaked": "saved dissolve fringe, fixed in source-pixel space"
+    },
+    "12": {
+      "id": 12,
+      "name": "图层 3",
+      "path": "/画板 1/卧室/图层 3",
+      "kind": "pixel",
+      "x": 301,
+      "y": 4766,
+      "width": 238,
+      "height": 800,
+      "bbox": [
+        301,
+        4766,
+        539,
+        5566
+      ],
+      "zIndex": 2,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/bedroom/layer-12.png",
+      "originalOpacity": 1.0
+    },
+    "13": {
+      "id": 13,
+      "name": "右气泡",
+      "path": "/画板 1/卧室/右气泡",
+      "kind": "smartobject",
+      "x": 59,
+      "y": 4429,
+      "width": 411,
+      "height": 165,
+      "bbox": [
+        59,
+        4429,
+        470,
+        4594
+      ],
+      "zIndex": 3,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/bedroom/layer-13.png",
+      "originalOpacity": 1.0
+    },
+    "14": {
+      "id": 14,
+      "name": "右气泡1",
+      "path": "/画板 1/卧室/右气泡1",
+      "kind": "smartobject",
+      "x": 548,
+      "y": 4240,
+      "width": 450,
+      "height": 158,
+      "bbox": [
+        548,
+        4240,
+        998,
+        4398
+      ],
+      "zIndex": 4,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/bedroom/layer-14.png",
+      "originalOpacity": 1.0
+    },
+    "10": {
+      "id": 10,
+      "name": "图层 2",
+      "path": "/画板 1/卧室/图层 2",
+      "kind": "pixel",
+      "x": 513,
+      "y": 4614,
+      "width": 287,
+      "height": 952,
+      "bbox": [
+        513,
+        4614,
+        800,
+        5566
+      ],
+      "zIndex": 5,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/bedroom/layer-10.png",
+      "originalOpacity": 1.0
+    },
+    "15": {
+      "id": 15,
+      "name": "椭圆 1",
+      "path": "/画板 1/卧室/椭圆 1",
+      "kind": "shape",
+      "x": 189,
+      "y": 5527,
+      "width": 648,
+      "height": 77,
+      "bbox": [
+        189,
+        5527,
+        837,
+        5604
+      ],
+      "zIndex": 6,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 64,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/bedroom/layer-15.png",
+      "originalOpacity": 0.25098039215686274
+    },
+    "34": {
+      "id": 34,
+      "name": "小羽吃饭了",
+      "path": "/画板 1/卧室/小羽吃饭了",
+      "kind": "type",
+      "x": 614,
+      "y": 4280,
+      "width": 321,
+      "height": 60,
+      "bbox": [
+        614,
+        4280,
+        935,
+        4340
+      ],
+      "zIndex": 7,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/bedroom/layer-34.png",
+      "originalOpacity": 1.0
+    },
+    "35": {
+      "id": 35,
+      "name": "别吵，老冯",
+      "path": "/画板 1/卧室/别吵，老冯",
+      "kind": "type",
+      "x": 120,
+      "y": 4451,
+      "width": 283,
+      "height": 116,
+      "bbox": [
+        120,
+        4451,
+        403,
+        4567
+      ],
+      "zIndex": 8,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/bedroom/layer-35.png",
+      "originalOpacity": 1.0
+    },
+    "16": {
+      "id": 16,
+      "name": "整个h5的背景",
+      "path": "/画板 1/教室/整个h5的背景",
+      "kind": "smartobject",
+      "x": -2,
+      "y": 5766,
+      "width": 1082,
+      "height": 1922,
+      "bbox": [
+        -2,
+        5766,
+        1080,
+        7688
+      ],
+      "zIndex": 0,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-16.png",
+      "originalOpacity": 1.0
+    },
+    "19": {
+      "id": 19,
+      "name": "右气泡",
+      "path": "/画板 1/教室/右气泡",
+      "kind": "smartobject",
+      "x": 62,
+      "y": 6173,
+      "width": 433,
+      "height": 173,
+      "bbox": [
+        62,
+        6173,
+        495,
+        6346
+      ],
+      "zIndex": 1,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-19.png",
+      "originalOpacity": 1.0
+    },
+    "18": {
+      "id": 18,
+      "name": "右气泡",
+      "path": "/画板 1/教室/右气泡",
+      "kind": "smartobject",
+      "x": 436,
+      "y": 5966,
+      "width": 569,
+      "height": 199,
+      "bbox": [
+        436,
+        5966,
+        1005,
+        6165
+      ],
+      "zIndex": 2,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-18.png",
+      "originalOpacity": 1.0
+    },
+    "60": {
+      "id": 60,
+      "name": "大家记得完成作业",
+      "path": "/画板 1/教室/大家记得完成作业",
+      "kind": "type",
+      "x": 252,
+      "y": 7123,
+      "width": 521,
+      "height": 60,
+      "bbox": [
+        252,
+        7123,
+        773,
+        7183
+      ],
+      "zIndex": 3,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-60.png",
+      "originalOpacity": 1.0
+    },
+    "17": {
+      "id": 17,
+      "name": "教室样式",
+      "path": "/画板 1/教室/教室样式",
+      "kind": "smartobject",
+      "x": -29,
+      "y": 6328,
+      "width": 1079,
+      "height": 985,
+      "bbox": [
+        -29,
+        6328,
+        1050,
+        7313
+      ],
+      "zIndex": 4,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-17.png",
+      "originalOpacity": 1.0
+    },
+    "27": {
+      "id": 27,
+      "name": "d0be0f33-7882-4655-8000-a2915865e653",
+      "path": "/画板 1/教室/d0be0f33-7882-4655-8000-a2915865e653",
+      "kind": "smartobject",
+      "x": 191,
+      "y": 6474,
+      "width": 676,
+      "height": 1014,
+      "bbox": [
+        191,
+        6474,
+        867,
+        7488
+      ],
+      "zIndex": 5,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-27-blend-if.png",
+      "originalOpacity": 1.0,
+      "blendIfBaked": {
+        "sourceWhite": [
+          226,
+          226
+        ],
+        "sourceBlack": [
+          0,
+          0
+        ],
+        "underlying": [
+          0,
+          0,
+          255,
+          255
+        ]
+      }
+    },
+    "36": {
+      "id": 36,
+      "name": "大家记得完成作业",
+      "path": "/画板 1/教室/大家记得完成作业",
+      "kind": "type",
+      "x": 463,
+      "y": 6019,
+      "width": 521,
+      "height": 60,
+      "bbox": [
+        463,
+        6019,
+        984,
+        6079
+      ],
+      "zIndex": 6,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-36.png",
+      "originalOpacity": 1.0
+    },
+    "37": {
+      "id": 37,
+      "name": "包的，包的",
+      "path": "/画板 1/教室/包的，包的",
+      "kind": "type",
+      "x": 139,
+      "y": 6201,
+      "width": 283,
+      "height": 116,
+      "bbox": [
+        139,
+        6201,
+        422,
+        6317
+      ],
+      "zIndex": 7,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-37.png",
+      "originalOpacity": 1.0
+    },
+    "78": {
+      "id": 78,
+      "name": "整个h5的背景",
+      "path": "/画板 1/介绍小羽/整个h5的背景",
+      "kind": "smartobject",
+      "x": 0,
+      "y": 1986,
+      "width": 1081,
+      "height": 1854,
+      "bbox": [
+        0,
+        1986,
+        1081,
+        3840
+      ],
+      "zIndex": 0,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-78.png",
+      "originalOpacity": 1.0
+    },
+    "85": {
+      "id": 85,
+      "name": "茫然站立的小羽",
+      "path": "/画板 1/介绍小羽/茫然站立的小羽",
+      "kind": "smartobject",
+      "x": 210,
+      "y": 2817,
+      "width": 676,
+      "height": 1013,
+      "bbox": [
+        210,
+        2817,
+        886,
+        3830
+      ],
+      "zIndex": 1,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-85-blend-if.png",
+      "originalOpacity": 1.0,
+      "blendIfBaked": {
+        "sourceWhite": [
+          232,
+          232
+        ],
+        "sourceBlack": [
+          0,
+          0
+        ],
+        "underlying": [
+          0,
+          0,
+          255,
+          255
+        ]
+      }
+    },
+    "89": {
+      "id": 89,
+      "name": "小羽给自己创建了一个账号 在社交平台上看到了同学们 之前在学校聊起的话题  ",
+      "path": "/画板 1/介绍小羽/小羽给自己创建了一个账号 在社交平台上看到了同学们 之前在学校聊起的话题  ",
+      "kind": "type",
+      "x": 242,
+      "y": 2469,
+      "width": 601,
+      "height": 163,
+      "bbox": [
+        242,
+        2469,
+        843,
+        2632
+      ],
+      "zIndex": 2,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-89.png",
+      "originalOpacity": 1.0
+    },
+    "90": {
+      "id": 90,
+      "name": "他感到开心  因为这些是现在最时髦的语言",
+      "path": "/画板 1/介绍小羽/他感到开心  因为这些是现在最时髦的语言",
+      "kind": "type",
+      "x": 222,
+      "y": 2683,
+      "width": 649,
+      "height": 105,
+      "bbox": [
+        222,
+        2683,
+        871,
+        2788
+      ],
+      "zIndex": 3,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-90.png",
+      "originalOpacity": 1.0
+    },
+    "86": {
+      "id": 86,
+      "name": "这是小羽",
+      "path": "/画板 1/介绍小羽/这是小羽",
+      "kind": "type",
+      "x": 441,
+      "y": 2107,
+      "width": 198,
+      "height": 47,
+      "bbox": [
+        441,
+        2107,
+        639,
+        2154
+      ],
+      "zIndex": 4,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-86.png",
+      "originalOpacity": 1.0
+    },
+    "87": {
+      "id": 87,
+      "name": "今年上小学五年级",
+      "path": "/画板 1/介绍小羽/今年上小学五年级",
+      "kind": "type",
+      "x": 335,
+      "y": 2211,
+      "width": 402,
+      "height": 47,
+      "bbox": [
+        335,
+        2211,
+        737,
+        2258
+      ],
+      "zIndex": 5,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-87.png",
+      "originalOpacity": 1.0
+    },
+    "88": {
+      "id": 88,
+      "name": "妈妈工作忙 给他买了一个智能手机",
+      "path": "/画板 1/介绍小羽/妈妈工作忙 给他买了一个智能手机",
+      "kind": "type",
+      "x": 288,
+      "y": 2308,
+      "width": 504,
+      "height": 105,
+      "bbox": [
+        288,
+        2308,
+        792,
+        2413
+      ],
+      "zIndex": 6,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-88.png",
+      "originalOpacity": 1.0
+    },
+    "71": {
+      "id": 71,
+      "name": "整个h5的背景",
+      "path": "/画板 1/开头/整个h5的背景",
+      "kind": "smartobject",
+      "x": -6,
+      "y": -244,
+      "width": 1111,
+      "height": 2230,
+      "bbox": [
+        -6,
+        -244,
+        1105,
+        1986
+      ],
+      "zIndex": 0,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-71.png",
+      "originalOpacity": 1.0
+    },
+    "76": {
+      "id": 76,
+      "name": "很多孩子",
+      "path": "/画板 1/开头/很多孩子",
+      "kind": "smartobject",
+      "x": -30,
+      "y": -384,
+      "width": 1107,
+      "height": 1501,
+      "bbox": [
+        -30,
+        -384,
+        1077,
+        1117
+      ],
+      "zIndex": 1,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 166,
+      "blendMode": "hLit",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-76.png",
+      "originalOpacity": 0.6509803921568628
+    },
+    "74": {
+      "id": 74,
+      "name": "1.96亿",
+      "path": "/画板 1/开头/1.96亿",
+      "kind": "type",
+      "x": 111,
+      "y": 571,
+      "width": 618,
+      "height": 184,
+      "bbox": [
+        111,
+        571,
+        729,
+        755
+      ],
+      "zIndex": 2,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-74.png",
+      "originalOpacity": 1.0
+    },
+    "84": {
+      "id": 84,
+      "name": "图层 6",
+      "path": "/画板 1/开头/图层 6",
+      "kind": "pixel",
+      "x": 461,
+      "y": 277,
+      "width": 204,
+      "height": 168,
+      "bbox": [
+        461,
+        277,
+        665,
+        445
+      ],
+      "zIndex": 3,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 189,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-84.png",
+      "originalOpacity": 0.7411764705882353
+    },
+    "75": {
+      "id": 75,
+      "name": "过早上网的一代",
+      "path": "/画板 1/开头/过早上网的一代",
+      "kind": "type",
+      "x": 133,
+      "y": 1279,
+      "width": 832,
+      "height": 200,
+      "bbox": [
+        133,
+        1279,
+        965,
+        1479
+      ],
+      "zIndex": 4,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-75.png",
+      "originalOpacity": 1.0
+    },
+    "77": {
+      "id": 77,
+      "name": "未成年人",
+      "path": "/画板 1/开头/未成年人",
+      "kind": "type",
+      "x": 297,
+      "y": 811,
+      "width": 667,
+      "height": 223,
+      "bbox": [
+        297,
+        811,
+        964,
+        1034
+      ],
+      "zIndex": 5,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-77.png",
+      "originalOpacity": 1.0
+    },
+    "29": {
+      "id": 29,
+      "name": "整个h5的背景",
+      "path": "/画板 1/过渡/整个h5的背景",
+      "kind": "smartobject",
+      "x": -3,
+      "y": 9740,
+      "width": 1083,
+      "height": 1957,
+      "bbox": [
+        -3,
+        9740,
+        1080,
+        11697
+      ],
+      "zIndex": 0,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-29.png",
+      "originalOpacity": 1.0
+    },
+    "30": {
+      "id": 30,
+      "name": "手机外壳",
+      "path": "/画板 1/过渡/手机外壳",
+      "kind": "smartobject",
+      "x": -33,
+      "y": 10157,
+      "width": 1099,
+      "height": 1973,
+      "bbox": [
+        -33,
+        10157,
+        1066,
+        12130
+      ],
+      "zIndex": 1,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-30-blend-if.png",
+      "originalOpacity": 1.0,
+      "blendIfBaked": {
+        "sourceWhite": [
+          236,
+          236
+        ],
+        "sourceBlack": [
+          0,
+          0
+        ],
+        "underlying": [
+          0,
+          0,
+          255,
+          255
+        ]
+      }
+    },
+    "65": {
+      "id": 65,
+      "name": "信息流",
+      "path": "/画板 1/过渡/信息流",
+      "kind": "pixel",
+      "x": 112,
+      "y": 10258,
+      "width": 814,
+      "height": 1445,
+      "bbox": [
+        112,
+        10258,
+        926,
+        11703
+      ],
+      "zIndex": 2,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 150,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-65.png",
+      "originalOpacity": 0.5882352941176471
+    },
+    "91": {
+      "id": 91,
+      "name": "点击查看小羽的手机",
+      "path": "/画板 1/过渡/点击查看小羽的手机",
+      "kind": "type",
+      "x": 350,
+      "y": 10466,
+      "width": 338,
+      "height": 36,
+      "bbox": [
+        350,
+        10466,
+        688,
+        10502
+      ],
+      "zIndex": 3,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-91.png",
+      "originalOpacity": 1.0
+    },
+    "92": {
+      "id": 92,
+      "name": "妈妈感到疑惑 自己在家里好像没有说过这些话 小羽是在哪学的",
+      "path": "/画板 1/过渡/妈妈感到疑惑 自己在家里好像没有说过这些话 小羽是在哪学的",
+      "kind": "type",
+      "x": 272,
+      "y": 9944,
+      "width": 523,
+      "height": 122,
+      "bbox": [
+        272,
+        9944,
+        795,
+        10066
+      ],
+      "zIndex": 4,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-92.png",
+      "originalOpacity": 1.0
+    },
+    "33": {
+      "id": 33,
+      "name": "整个h5的背景",
+      "path": "/画板 1/小羽的网络环境/整个h5的背景",
+      "kind": "smartobject",
+      "x": -27,
+      "y": 11703,
+      "width": 1077,
+      "height": 1846,
+      "bbox": [
+        -27,
+        11703,
+        1050,
+        13549
+      ],
+      "zIndex": 0,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-33.png",
+      "originalOpacity": 1.0
+    },
+    "64": {
+      "id": 64,
+      "name": "信息流",
+      "path": "/画板 1/小羽的网络环境/信息流",
+      "kind": "smartobject",
+      "x": -15,
+      "y": 11697,
+      "width": 1099,
+      "height": 1852,
+      "bbox": [
+        -15,
+        11697,
+        1084,
+        13549
+      ],
+      "zIndex": 1,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 237,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-64.png",
+      "originalOpacity": 0.9294117647058824
+    },
+    "95": {
+      "id": 95,
+      "name": "图层 7",
+      "path": "/画板 1/小羽的网络环境/图层 7",
+      "kind": "pixel",
+      "x": 78,
+      "y": 11919,
+      "width": 485,
+      "height": 137,
+      "bbox": [
+        78,
+        11919,
+        563,
+        12056
+      ],
+      "zIndex": 2,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-95.png",
+      "originalOpacity": 1.0
+    },
+    "96": {
+      "id": 96,
+      "name": "图层 8",
+      "path": "/画板 1/小羽的网络环境/图层 8",
+      "kind": "pixel",
+      "x": 420,
+      "y": 12057,
+      "width": 602,
+      "height": 137,
+      "bbox": [
+        420,
+        12057,
+        1022,
+        12194
+      ],
+      "zIndex": 3,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-96.png",
+      "originalOpacity": 1.0
+    },
+    "97": {
+      "id": 97,
+      "name": "图层 9",
+      "path": "/画板 1/小羽的网络环境/图层 9",
+      "kind": "pixel",
+      "x": 78,
+      "y": 12229,
+      "width": 485,
+      "height": 137,
+      "bbox": [
+        78,
+        12229,
+        563,
+        12366
+      ],
+      "zIndex": 4,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-97.png",
+      "originalOpacity": 1.0
+    },
+    "101": {
+      "id": 101,
+      "name": "「班里人手一个，你还没有吗？」",
+      "path": "/画板 1/小羽的网络环境/「班里人手一个，你还没有吗？」",
+      "kind": "type",
+      "x": 187,
+      "y": 12274,
+      "width": 325,
+      "height": 49,
+      "bbox": [
+        187,
+        12274,
+        512,
+        12323
+      ],
+      "zIndex": 5,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-101.png",
+      "originalOpacity": 1.0
+    },
+    "98": {
+      "id": 98,
+      "name": "图层 10",
+      "path": "/画板 1/小羽的网络环境/图层 10",
+      "kind": "pixel",
+      "x": 461,
+      "y": 12376,
+      "width": 485,
+      "height": 137,
+      "bbox": [
+        461,
+        12376,
+        946,
+        12513
+      ],
+      "zIndex": 6,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-98.png",
+      "originalOpacity": 1.0
+    },
+    "103": {
+      "id": 103,
+      "name": "图层 11",
+      "path": "/画板 1/小羽的网络环境/图层 11",
+      "kind": "pixel",
+      "x": 95,
+      "y": 12540,
+      "width": 591,
+      "height": 137,
+      "bbox": [
+        95,
+        12540,
+        686,
+        12677
+      ],
+      "zIndex": 7,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-103.png",
+      "originalOpacity": 1.0
+    },
+    "104": {
+      "id": 104,
+      "name": "主播被问能不能赢，回答：「包的，包的！」",
+      "path": "/画板 1/小羽的网络环境/主播被问能不能赢，回答：「包的，包的！」",
+      "kind": "type",
+      "x": 192,
+      "y": 12586,
+      "width": 458,
+      "height": 48,
+      "bbox": [
+        192,
+        12586,
+        650,
+        12634
+      ],
+      "zIndex": 8,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-104.png",
+      "originalOpacity": 1.0
+    },
+    "99": {
+      "id": 99,
+      "name": "「小学生也要学会的氛围感穿搭」",
+      "path": "/画板 1/小羽的网络环境/「小学生也要学会的氛围感穿搭」",
+      "kind": "type",
+      "x": 180,
+      "y": 11966,
+      "width": 325,
+      "height": 46,
+      "bbox": [
+        180,
+        11966,
+        505,
+        12012
+      ],
+      "zIndex": 9,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-99.png",
+      "originalOpacity": 1.0
+    },
+    "100": {
+      "id": 100,
+      "name": "「用地域、性别、身体特征和家庭条件制造笑话」",
+      "path": "/画板 1/小羽的网络环境/「用地域、性别、身体特征和家庭条件制造笑话」",
+      "kind": "type",
+      "x": 509,
+      "y": 12104,
+      "width": 491,
+      "height": 46,
+      "bbox": [
+        509,
+        12104,
+        1000,
+        12150
+      ],
+      "zIndex": 10,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-100.png",
+      "originalOpacity": 1.0
+    },
+    "102": {
+      "id": 102,
+      "name": "「你爸妈不理解你，我理解你。」",
+      "path": "/画板 1/小羽的网络环境/「你爸妈不理解你，我理解你。」",
+      "kind": "type",
+      "x": 587,
+      "y": 12423,
+      "width": 325,
+      "height": 48,
+      "bbox": [
+        587,
+        12423,
+        912,
+        12471
+      ],
+      "zIndex": 11,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-102.png",
+      "originalOpacity": 1.0
+    },
+    "63": {
+      "id": 63,
+      "name": "小羽坐在地上痴迷的玩手机",
+      "path": "/画板 1/小羽的网络环境/小羽坐在地上痴迷的玩手机",
+      "kind": "smartobject",
+      "x": 235,
+      "y": 12647,
+      "width": 549,
+      "height": 819,
+      "bbox": [
+        235,
+        12647,
+        784,
+        13466
+      ],
+      "zIndex": 12,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 255,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-63-blend-if.png",
+      "originalOpacity": 1.0,
+      "blendIfBaked": {
+        "sourceWhite": [
+          237,
+          237
+        ],
+        "sourceBlack": [
+          0,
+          0
+        ],
+        "underlying": [
+          0,
+          0,
+          255,
+          255
+        ]
+      }
+    },
+    "93": {
+      "id": 93,
+      "name": "椭圆 2",
+      "path": "/画板 1/小羽的网络环境/椭圆 2",
+      "kind": "shape",
+      "x": 138,
+      "y": 13232,
+      "width": 699,
+      "height": 105,
+      "bbox": [
+        138,
+        13232,
+        837,
+        13337
+      ],
+      "zIndex": 13,
+      "visible": true,
+      "effectiveVisible": true,
+      "opacity": 74,
+      "blendMode": "norm",
+      "hasPixels": true,
+      "file": "assets/interaction/layer-93.png",
+      "originalOpacity": 0.2901960784313726
+    }
+  },
+  "sceneLayers": {
+    "opening": [
+      71,
+      76,
+      74,
+      84,
+      75,
+      77
+    ],
+    "introduction": [
+      78,
+      85,
+      89,
+      90,
+      86,
+      87,
+      88
+    ],
+    "bedroom": [
+      5,
+      8,
+      12,
+      13,
+      14,
+      10,
+      15,
+      34,
+      35
+    ],
+    "classroom": [
+      16,
+      19,
+      18,
+      60,
+      17,
+      27,
+      36,
+      37
+    ],
+    "school-road": [
+      24,
+      25,
+      26,
+      62,
+      23,
+      61,
+      38,
+      22,
+      28
+    ],
+    "transition": [
+      29,
+      30,
+      65,
+      91,
+      92
+    ],
+    "online-world": [
+      33,
+      64,
+      95,
+      96,
+      97,
+      101,
+      98,
+      103,
+      104,
+      99,
+      100,
+      102,
+      63,
+      93
+    ]
+  },
+  "openingPatches": [
+    {
+      "id": 74,
+      "file": "assets/interaction/title-74-with-effect.png",
+      "x": 83,
+      "y": 543,
+      "width": 674,
+      "height": 240,
+      "zIndex": 2
+    },
+    {
+      "id": 77,
+      "file": "assets/interaction/title-77-with-effect.png",
+      "x": 269,
+      "y": 783,
+      "width": 723,
+      "height": 279,
+      "zIndex": 5
+    },
+    {
+      "id": 75,
+      "file": "assets/interaction/title-75-with-effect.png",
+      "x": 105,
+      "y": 1251,
+      "width": 888,
+      "height": 256,
+      "zIndex": 4
+    }
+  ],
+  "occludedIds": [
+    24,
+    38,
+    60
+  ],
+  "sourceCanvas": [
+    1080,
+    18164
+  ],
+  "approvedSourceSha256": "14627d487e95ed51b3b19ca147f55c053cc16c8db13e08287fbe6eadac80a757",
+  "currentSourceSha256": "21d396e5472f8755b10d25ad690986af977fc56a78e7d7bf4025e3a7aca297a7",
+  "coordinateWindows": [
+    {
+      "id": 29,
+      "currentSourceBounds": [
+        -3,
+        9738,
+        1080,
+        11697
+      ],
+      "approvedBounds": [
+        -3,
+        9740,
+        1080,
+        11697
+      ],
+      "operation": "original-coordinate window; no resampling"
+    },
+    {
+      "id": 93,
+      "currentSourceBounds": [
+        138,
+        13231,
+        838,
+        13337
+      ],
+      "approvedBounds": [
+        138,
+        13232,
+        837,
+        13337
+      ],
+      "operation": "original-coordinate window; no resampling"
+    }
+  ]
+}

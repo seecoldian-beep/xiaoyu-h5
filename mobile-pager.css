@@ -1,0 +1,69 @@
+/* Mobile narrative paging. Artwork keeps its PSD coordinates; only the viewport changes pages. */
+#h5-page-fade,
+#h5-page-mask-top,
+#h5-page-mask-bottom {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  html.h5-mobile-pager,
+  html.h5-mobile-pager body {
+    height: auto !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  html.h5-mobile-pager:not(.h5-interview-flow) #page {
+    touch-action: none;
+  }
+
+  html.h5-mobile-pager.h5-interview-flow,
+  html.h5-mobile-pager.h5-interview-flow body {
+    touch-action: pan-y;
+  }
+
+  html.h5-mobile-pager.h5-interview-flow #page {
+    touch-action: pan-y;
+  }
+
+  #h5-page-fade {
+    position: fixed;
+    z-index: 18000;
+    inset: 0;
+    display: block;
+    background: #73808e;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+  }
+
+  #h5-page-fade.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #h5-page-mask-top,
+  #h5-page-mask-bottom {
+    position: fixed;
+    z-index: 8000;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 0;
+    background: var(--h5-page-edge, #878e95);
+    pointer-events: none;
+  }
+
+  #h5-page-mask-top { top: 0; }
+  #h5-page-mask-bottom { bottom: 0; }
+
+  html.h5-interview-flow #h5-page-mask-top,
+  html.h5-interview-flow #h5-page-mask-bottom {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #h5-page-fade { transition: none !important; }
+}

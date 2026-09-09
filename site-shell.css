@@ -1,0 +1,129 @@
+html.is-loading,
+html.is-loading body {
+  overflow: hidden;
+}
+
+html.is-loading:not(.is-ready) #page {
+  visibility: hidden;
+}
+
+#h5-loader {
+  position: fixed;
+  z-index: 20000;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  background: #73808e;
+  opacity: 1;
+  transition: opacity 360ms ease;
+  touch-action: none;
+}
+
+#h5-loader[hidden] {
+  display: none;
+}
+
+html.is-ready #h5-loader {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.h5-loader-panel {
+  display: grid;
+  width: min(100%, 430px);
+  min-height: 100vh;
+  min-height: 100svh;
+  place-items: center;
+  color: #4a5668;
+  background: #eee3c5;
+}
+
+.h5-loader-content {
+  display: flex;
+  width: 240px;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(-4vh);
+}
+
+.h5-loader-icon {
+  display: block;
+  width: 82px;
+  height: auto;
+  margin-bottom: 26px;
+  opacity: .82;
+  animation: h5-loader-breathe 1.7s ease-in-out infinite;
+}
+
+.h5-loader-title {
+  margin: 0 0 28px;
+  font: 500 22px/1.5 "Songti SC", "STSong", serif;
+  letter-spacing: .14em;
+}
+
+.h5-loader-track {
+  width: 190px;
+  height: 3px;
+  overflow: hidden;
+  background: rgba(74, 86, 104, .18);
+}
+
+#h5-loader-bar {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: #65758a;
+  transition: width 180ms ease;
+}
+
+.h5-loader-text {
+  margin: 13px 0 0;
+  font: 14px/1.5 "PingFang SC", "Microsoft YaHei", sans-serif;
+  letter-spacing: .08em;
+}
+
+.return-to-opening {
+  position: absolute;
+  z-index: 5000;
+  left: 50%;
+  top: 1190px;
+  width: 320px;
+  min-height: var(--extension-touch-size, 86px);
+  padding: 10px 18px;
+  border: 2px solid rgba(71, 87, 111, .58);
+  border-radius: 999px;
+  color: #43536b;
+  background: rgba(238, 227, 197, .9);
+  box-shadow: 0 7px 20px rgba(49, 58, 72, .12);
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: calc(var(--extension-touch-size, 86px) * .34);
+  line-height: 1.4;
+  letter-spacing: .08em;
+  transform: translateX(-50%);
+  cursor: pointer;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.return-to-opening:focus-visible {
+  outline: 3px solid #4f7eff;
+  outline-offset: 4px;
+}
+
+.return-to-opening:active {
+  transform: translateX(-50%) scale(.98);
+}
+
+@keyframes h5-loader-breathe {
+  0%, 100% { opacity: .58; transform: translateY(-3px); }
+  50% { opacity: .9; transform: translateY(3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #h5-loader,
+  #h5-loader-bar,
+  .h5-loader-icon {
+    animation: none !important;
+    transition: none !important;
+  }
+}
