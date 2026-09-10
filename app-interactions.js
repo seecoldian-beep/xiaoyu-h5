@@ -367,7 +367,7 @@
       if (mobilePage?.enabled) {
         const mobileDuration = scene.slug === 'introduction'
           ? introductionMobileDuration
-          : config.dialogues ? narrativeMobileDuration : 1800;
+          : config?.dialogues ? narrativeMobileDuration : 1800;
         p = pagedActive && scene.slug !== 'opening' && mobilePage.startedAt !== null
           ? motion.clamp((now-mobilePage.startedAt)/mobileDuration)
           : scene.progress;

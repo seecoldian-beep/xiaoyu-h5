@@ -30,6 +30,7 @@ assert.doesNotMatch(app, /openingInteractionScenes\.map/, '手机端不得并发
 assert.match(app, /try\s*{\s*await node\.decode\(\)/, 'iOS 图片解码失败时应允许回退到正常加载检测');
 assert.match(app, /mobilePage\.startedAt\s*=\s*performance\.now\(\)/, '移动端动画计时必须从当前场景素材就绪后开始');
 assert.match(app, /mobilePage\.startedAt\s*!==\s*null/, '素材未就绪时不得在后台耗尽场景动画');
+assert.match(app, /config\?\.dialogues\s*\?\s*narrativeMobileDuration/, '手机首屏没有对话配置时不得中断整套渲染循环');
 assert.match(app, /reducedMotion\s*=\s*\(\)\s*=>\s*params\.get\('motion'\)\s*===\s*'reduce'/, '系统减少动态效果不得让核心交互直接跳到末帧');
 assert.doesNotMatch(app, /reduced\.matches\s*\|\|/, '不得再由系统偏好自动关闭叙事动画');
 assert.match(shell, /await Promise\.race\(\[openingInteractionsReady, delay\(8000\)\]\)/, '加载页应等待开头交互素材准备完成');
