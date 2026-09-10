@@ -18,46 +18,64 @@
   let mobilePage = null;
   const interviewSlugs = new Set(['interview-intro', 'interview-one', 'interview-two', 'interview-three']);
   const underlineAudio = {context: null};
+  const underlineDrawDuration = 720;
+  const underlineGap = 180;
 
   function primeUnderlineAudio() {
     if (reduced) return;
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
     if (!underlineAudio.context) underlineAudio.context = new AudioContext();
-    if (underlineAudio.context.state === 'suspended') underlineAudio.context.resume().catch(() => {});
+    if (underlineAudio.context.state === 'suspended') {
+      underlineAudio.context.resume().then(() => {
+        removeUnderlineAudioUnlock();
+        schedule();
+      }).catch(() => {});
+    } else if (underlineAudio.context.state === 'running') {
+      removeUnderlineAudioUnlock();
+      schedule();
+    }
   }
 
   function playUnderlineSound(variant = 0) {
     const context = underlineAudio.context;
-    if (reduced || !context || context.state !== 'running') return;
+    if (reduced || !context || context.state !== 'running') return false;
     const volume = window.H5AudioController?.volume ?? .72;
-    if (volume <= 0) return;
-    const duration = .24 + variant * .035;
+    if (volume <= 0) return true;
+    const duration = .38 + variant * .04;
     const frames = Math.ceil(context.sampleRate * duration);
     const buffer = context.createBuffer(1, frames, context.sampleRate);
     const samples = buffer.getChannelData(0);
     for (let i = 0; i < frames; i += 1) {
       const envelope = Math.sin(Math.PI * i / frames);
-      samples[i] = (Math.random() * 2 - 1) * envelope;
+      const pencilTexture = .62 + .38 * Math.sin(i * .047 + variant);
+      samples[i] = (Math.random() * 2 - 1) * envelope * pencilTexture;
     }
     const source = context.createBufferSource();
     const filter = context.createBiquadFilter();
     const gain = context.createGain();
     filter.type = 'bandpass';
-    filter.frequency.setValueAtTime(950 + variant * 130, context.currentTime);
-    filter.Q.value = .8;
+    filter.frequency.setValueAtTime(1180 + variant * 150, context.currentTime);
+    filter.Q.value = .7;
     gain.gain.setValueAtTime(.0001, context.currentTime);
-    gain.gain.exponentialRampToValueAtTime(Math.max(.0001, .045 * volume), context.currentTime + .025);
+    gain.gain.exponentialRampToValueAtTime(Math.max(.0001, .11 * volume), context.currentTime + .025);
     gain.gain.exponentialRampToValueAtTime(.0001, context.currentTime + duration);
     source.buffer = buffer;
     source.connect(filter).connect(gain).connect(context.destination);
     source.start();
     source.stop(context.currentTime + duration + .02);
+    return true;
   }
 
-  document.addEventListener('pointerdown', primeUnderlineAudio, {once: true, capture: true, passive: true});
-  document.addEventListener('touchstart', primeUnderlineAudio, {once: true, capture: true, passive: true});
-  document.addEventListener('keydown', primeUnderlineAudio, {once: true, capture: true});
+  function removeUnderlineAudioUnlock() {
+    document.removeEventListener('pointerdown', primeUnderlineAudio, true);
+    document.removeEventListener('touchstart', primeUnderlineAudio, true);
+    document.removeEventListener('keydown', primeUnderlineAudio, true);
+  }
+
+  document.addEventListener('pointerdown', primeUnderlineAudio, {capture: true, passive: true});
+  document.addEventListener('touchstart', primeUnderlineAudio, {capture: true, passive: true});
+  document.addEventListener('keydown', primeUnderlineAudio, {capture: true});
 
   const extensionCanvas = document.createElement('div');
   page.classList.add('extension-enabled');
@@ -247,7 +265,8 @@
     const connector = addLayer(slug, connectorId);
     const underlines = underlineSpecs.map(spec => addUnderline(slug, spec));
     const underlinePlayed = underlines.map(() => false);
-    renderers.push(() => {
+    let underlineStartedAt = null;
+    renderers.push(now => {
       const progress = sceneProgress(slug, .92, 1.05);
       const values = motion.interviewFrame(progress);
       setVisual(house, values.house, 16 * (1 - values.house));
@@ -255,15 +274,24 @@
         const value = motion.phase(values.text, index * .11, Math.min(1, .7 + index * .11));
         setVisual(item, value, 10 * (1 - value), .98 + .02 * value);
       });
-      underlines.forEach((item, index) => {
-        const start = .7 + index * .1;
-        const underlineProgress = motion.phase(progress, start, .84 + index * .1);
-        setUnderline(item, underlineProgress);
-        if (!underlinePlayed[index] && progress >= start) {
-          underlinePlayed[index] = true;
-          playUnderlineSound(index);
+      if (reduced) {
+        underlines.forEach(item => setUnderline(item, progress >= .62 ? 1 : 0));
+      } else {
+        if (underlineStartedAt === null && progress >= .62) underlineStartedAt = now;
+        if (underlineStartedAt !== null) {
+          const elapsed = now - underlineStartedAt;
+          underlines.forEach((item, index) => {
+            const start = index * (underlineDrawDuration + underlineGap);
+            const underlineProgress = motion.phase(elapsed, start, start + underlineDrawDuration);
+            setUnderline(item, underlineProgress);
+            if (!underlinePlayed[index] && elapsed >= start) {
+              underlinePlayed[index] = playUnderlineSound(index);
+            }
+          });
+          const total = underlines.length * underlineDrawDuration + Math.max(0, underlines.length - 1) * underlineGap;
+          if (elapsed < total) schedule();
         }
-      });
+      }
       setVisual(connector, values.connector, 10 * (1 - values.connector));
     });
   }
@@ -411,7 +439,7 @@
 
   function render(now) {
     frame = 0;
-    renderers.forEach(renderer => renderer());
+    renderers.forEach(renderer => renderer(now));
     updateCharts(now);
     if (mobilePage?.enabled && mobilePage.slug.startsWith('extension-')) {
       const slug = mobilePage.slug.slice('extension-'.length);

@@ -19,15 +19,15 @@
     });
   }
   function narrativeFrame(p, replyMilliseconds = null) {
-    const environmentOpacity = phase(p, 0, 0.30);
-    const replyAvailable = p >= 0.75;
+    const environmentOpacity = phase(p, 0, 0.25);
+    const replyAvailable = p >= 0.82;
     return {
       environmentOpacity,
       environmentY: -80 * (1 - environmentOpacity) || 0,
-      characters: phase(p, 0.34, 0.54),
-      dialogueOne: phase(p, 0.58, 0.75),
+      characters: phase(p, 0.28, 0.48),
+      dialogueOne: phase(p, 0.52, 0.82),
       replyAvailable,
-      dialogueTwo: replyAvailable && replyMilliseconds !== null ? phase(replyMilliseconds, 0, 850) : 0
+      dialogueTwo: replyAvailable && replyMilliseconds !== null ? phase(replyMilliseconds, 0, 1100) : 0
     };
   }
   function scrollProgress({scrollY, sceneY, interactionTop, scale, viewportHeight, characterDelta = 0}) {

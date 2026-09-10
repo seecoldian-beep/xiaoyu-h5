@@ -21,13 +21,15 @@ assert.match(
   '动态素材未解码前保留静态图，完成后也不得换图造成闪动'
 );
 assert.match(app, /introductionMobileDuration\s*=\s*5200/, '小羽介绍页应放慢到约 5.2 秒');
-assert.match(app, /narrativeMobileDuration\s*=\s*2400/, '卧室、教室和放学路对话应稍微放慢');
-assert.match(app, /replyDuration\s*=\s*850/, '点击后的回复气泡应稍微放慢');
+assert.match(app, /narrativeMobileDuration\s*=\s*3600/, '卧室、教室和放学路对话应明显放慢');
+assert.match(app, /replyDuration\s*=\s*1100/, '点击后的回复气泡应以约 1.1 秒渐显');
 
 const extension = read('extension.js');
 assert.match(extension, /interview-underline/, '三位家长页应包含重点句划线动画');
 assert.match(extension, /向下滑动/, '采访引入页应包含向下滑动指引');
 assert.match(extension, /playUnderlineSound/, '采访重点线应带有模拟划线音效');
+assert.match(extension, /underlineDrawDuration\s*=\s*720/, '采访重点线应使用独立计时绘制，避免滚动时瞬间完成');
+assert.match(extension, /underlinePlayed\[index\]\s*=\s*playUnderlineSound/, '划线音效应在音频解锁后可靠触发');
 assert.ok(fs.existsSync(path.join(root, 'assets/audio/h5-voice-48s.mp3')), '应包含前 48 秒配音文件');
 
 assert.doesNotMatch(

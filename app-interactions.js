@@ -15,8 +15,8 @@
   const qaPhoneTime = qa && params.has('phone') ? Math.max(0, Math.min(4000, Number(params.get('phone')))) : null;
   const qaOpeningTime = qa && params.has('opening') ? Math.max(0, Math.min(3800, Number(params.get('opening')))) : null;
   const introductionMobileDuration = 5200;
-  const narrativeMobileDuration = 2400;
-  const replyDuration = 850;
+  const narrativeMobileDuration = 3600;
+  const replyDuration = 1100;
   const scenes = new Map();
   let pageScale = 1;
   let frame = 0;
