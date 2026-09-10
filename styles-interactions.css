@@ -55,8 +55,5 @@ body { background: #939b9d; }
 .reply-hint span:last-child { text-decoration: underline; text-underline-offset: 7px; }
 .reply-hint[data-available="true"] { opacity: 1; pointer-events: auto; }
 .reply-hint:focus-visible { outline: 3px solid #4f7eff; outline-offset: -3px; }
-@media (prefers-reduced-motion: reduce) {
-  .psd-layer { animation: none !important; transition: none !important; }
-}
 .no-script { width: min(100%,1080px); margin: 0 auto; }
 .no-script img { display:block; width:100%; height:auto; }

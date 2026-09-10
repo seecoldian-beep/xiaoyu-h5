@@ -6,10 +6,11 @@
   const page = document.querySelector('#page');
   const canvas = document.querySelector('#design-canvas');
   const params = new URLSearchParams(location.search);
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const staticMode = params.get('mode') === 'static';
   const qa = params.get('qa') === '1';
-  const reducedMotion = () => reduced.matches || (qa && params.get('motion') === 'reduce');
+  // 叙事动效是理解内容所必需的，不再因手机系统“减少动态效果”而整段跳到末帧。
+  // 仍保留显式 motion=reduce 参数，供需要静态阅读的访问者主动选择。
+  const reducedMotion = () => params.get('motion') === 'reduce';
   const qaScene = params.get('scene');
   const qaProgress = qa && params.has('p') ? motion.clamp(Number(params.get('p'))) : null;
   const qaPhoneTime = qa && params.has('phone') ? Math.max(0, Math.min(4000, Number(params.get('phone')))) : null;
@@ -424,12 +425,6 @@
     }
     schedule();
   });
-  function motionPreferenceChanged() {
-    if (reducedMotion() && phone.clicked) finishPhone();
-    schedule();
-  }
-  if (reduced.addEventListener) reduced.addEventListener('change',motionPreferenceChanged);
-  else reduced.addListener(motionPreferenceChanged);
   document.addEventListener('visibilitychange',() => {
     if (!document.hidden) return schedule();
     if (phone.clicked && phone.raf) finishPhone();

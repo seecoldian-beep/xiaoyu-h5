@@ -28,6 +28,8 @@ assert.match(app, /__H5_OPENING_INTERACTIONS_READY__\s*=\s*Promise\.all/, '进�
 assert.match(app, /try\s*{\s*await node\.decode\(\)/, 'iOS 图片解码失败时应允许回退到正常加载检测');
 assert.match(app, /mobilePage\.startedAt\s*=\s*performance\.now\(\)/, '移动端动画计时必须从当前场景素材就绪后开始');
 assert.match(app, /mobilePage\.startedAt\s*!==\s*null/, '素材未就绪时不得在后台耗尽场景动画');
+assert.match(app, /reducedMotion\s*=\s*\(\)\s*=>\s*params\.get\('motion'\)\s*===\s*'reduce'/, '系统减少动态效果不得让核心交互直接跳到末帧');
+assert.doesNotMatch(app, /reduced\.matches\s*\|\|/, '不得再由系统偏好自动关闭叙事动画');
 assert.match(shell, /await Promise\.race\(\[openingInteractionsReady, delay\(8000\)\]\)/, '加载页应等待开头交互素材准备完成');
 
 const extension = read('extension.js');
@@ -36,6 +38,7 @@ assert.match(extension, /向下滑动/, '采访引入页应包含向下滑动指
 assert.match(extension, /playUnderlineSound/, '采访重点线应带有模拟划线音效');
 assert.match(extension, /underlineDrawDuration\s*=\s*720/, '采访重点线应使用独立计时绘制，避免滚动时瞬间完成');
 assert.match(extension, /underlinePlayed\[index\]\s*=\s*playUnderlineSound/, '划线音效应在音频解锁后可靠触发');
+assert.match(extension, /const reduced\s*=\s*params\.get\('motion'\)\s*===\s*'reduce'/, '采访动画默认不受系统减少动态效果影响');
 assert.ok(fs.existsSync(path.join(root, 'assets/audio/h5-voice-48s.mp3')), '应包含前 48 秒配音文件');
 
 assert.doesNotMatch(

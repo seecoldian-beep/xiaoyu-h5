@@ -9,7 +9,8 @@
 
   const params = new URLSearchParams(location.search);
   const staticMode = params.get('mode') === 'static';
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches || params.get('motion') === 'reduce';
+  // 采访划线和图表动画属于叙事内容，默认不被系统“减少动态效果”直接跳过。
+  const reduced = params.get('motion') === 'reduce';
   const seen = Object.create(null);
   const renderers = [];
   const chartStates = [];

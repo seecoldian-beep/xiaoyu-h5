@@ -259,10 +259,3 @@
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
 }
-
-@media (prefers-reduced-motion: reduce) {
-  #extension-canvas * {
-    animation-duration: 1ms !important;
-    transition-duration: 1ms !important;
-  }
-}
