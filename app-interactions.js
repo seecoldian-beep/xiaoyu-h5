@@ -15,6 +15,8 @@
   const qaPhoneTime = qa && params.has('phone') ? Math.max(0, Math.min(4000, Number(params.get('phone')))) : null;
   const qaOpeningTime = qa && params.has('opening') ? Math.max(0, Math.min(3800, Number(params.get('opening')))) : null;
   const introductionMobileDuration = 5200;
+  const narrativeMobileDuration = 2400;
+  const replyDuration = 850;
   const scenes = new Map();
   let pageScale = 1;
   let frame = 0;
@@ -102,7 +104,7 @@
       if (!scene.ready || scene.failed || scene.reply.clicked || scene.progress < .75) return;
       scene.reply.clicked = true;
       scene.reply.start = performance.now();
-      scene.reply.elapsed = reducedMotion() ? 600 : 0;
+      scene.reply.elapsed = reducedMotion() ? replyDuration : 0;
       button.disabled = true;
       button.setAttribute('aria-hidden', 'true');
       schedule();
@@ -207,8 +209,8 @@
     } else {
       const reply = scene.reply;
       if (reply.clicked) {
-        reply.elapsed = reducedMotion() ? 600 : Math.max(reply.elapsed, Math.min(600, now-reply.start));
-        if (reply.elapsed < 600) schedule();
+        reply.elapsed = reducedMotion() ? replyDuration : Math.max(reply.elapsed, Math.min(replyDuration, now-reply.start));
+        if (reply.elapsed < replyDuration) schedule();
       }
       const values = motion.narrativeFrame(p, reply.clicked ? reply.elapsed : null);
       setLayer(scene, config.environment, values.environmentOpacity,
@@ -345,8 +347,11 @@
       const pagedActive = mobilePage?.enabled && mobilePage.slug === scene.slug;
       let p;
       if (mobilePage?.enabled) {
+        const mobileDuration = scene.slug === 'introduction'
+          ? introductionMobileDuration
+          : config.dialogues ? narrativeMobileDuration : 1800;
         p = pagedActive && scene.slug !== 'opening'
-          ? motion.clamp((now-mobilePage.startedAt)/(scene.slug === 'introduction' ? introductionMobileDuration : 1800))
+          ? motion.clamp((now-mobilePage.startedAt)/mobileDuration)
           : scene.progress;
       } else {
         p = scene.slug === 'opening' ? motion.clamp(scrollY/(innerHeight*.22)) : motion.scrollProgress({
@@ -406,7 +411,7 @@
     if (!document.hidden) return schedule();
     if (phone.clicked && phone.raf) finishPhone();
     if (opening.start !== null) opening.elapsed = 3800;
-    scenes.forEach(scene => {if (scene.reply?.clicked) scene.reply.elapsed = 600;});
+    scenes.forEach(scene => {if (scene.reply?.clicked) scene.reply.elapsed = replyDuration;});
   });
   if (!staticMode) {
     if ('IntersectionObserver' in window) {

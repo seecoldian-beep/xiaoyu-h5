@@ -27,7 +27,7 @@
       characters: phase(p, 0.34, 0.54),
       dialogueOne: phase(p, 0.58, 0.75),
       replyAvailable,
-      dialogueTwo: replyAvailable && replyMilliseconds !== null ? phase(replyMilliseconds, 0, 600) : 0
+      dialogueTwo: replyAvailable && replyMilliseconds !== null ? phase(replyMilliseconds, 0, 850) : 0
     };
   }
   function scrollProgress({scrollY, sceneY, interactionTop, scale, viewportHeight, characterDelta = 0}) {

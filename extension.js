@@ -17,6 +17,47 @@
   let frame = 0;
   let mobilePage = null;
   const interviewSlugs = new Set(['interview-intro', 'interview-one', 'interview-two', 'interview-three']);
+  const underlineAudio = {context: null};
+
+  function primeUnderlineAudio() {
+    if (reduced) return;
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    if (!underlineAudio.context) underlineAudio.context = new AudioContext();
+    if (underlineAudio.context.state === 'suspended') underlineAudio.context.resume().catch(() => {});
+  }
+
+  function playUnderlineSound(variant = 0) {
+    const context = underlineAudio.context;
+    if (reduced || !context || context.state !== 'running') return;
+    const volume = window.H5AudioController?.volume ?? .72;
+    if (volume <= 0) return;
+    const duration = .24 + variant * .035;
+    const frames = Math.ceil(context.sampleRate * duration);
+    const buffer = context.createBuffer(1, frames, context.sampleRate);
+    const samples = buffer.getChannelData(0);
+    for (let i = 0; i < frames; i += 1) {
+      const envelope = Math.sin(Math.PI * i / frames);
+      samples[i] = (Math.random() * 2 - 1) * envelope;
+    }
+    const source = context.createBufferSource();
+    const filter = context.createBiquadFilter();
+    const gain = context.createGain();
+    filter.type = 'bandpass';
+    filter.frequency.setValueAtTime(950 + variant * 130, context.currentTime);
+    filter.Q.value = .8;
+    gain.gain.setValueAtTime(.0001, context.currentTime);
+    gain.gain.exponentialRampToValueAtTime(Math.max(.0001, .045 * volume), context.currentTime + .025);
+    gain.gain.exponentialRampToValueAtTime(.0001, context.currentTime + duration);
+    source.buffer = buffer;
+    source.connect(filter).connect(gain).connect(context.destination);
+    source.start();
+    source.stop(context.currentTime + duration + .02);
+  }
+
+  document.addEventListener('pointerdown', primeUnderlineAudio, {once: true, capture: true, passive: true});
+  document.addEventListener('touchstart', primeUnderlineAudio, {once: true, capture: true, passive: true});
+  document.addEventListener('keydown', primeUnderlineAudio, {once: true, capture: true});
 
   const extensionCanvas = document.createElement('div');
   page.classList.add('extension-enabled');
@@ -205,6 +246,7 @@
     const text = addLayers(slug, textIds);
     const connector = addLayer(slug, connectorId);
     const underlines = underlineSpecs.map(spec => addUnderline(slug, spec));
+    const underlinePlayed = underlines.map(() => false);
     renderers.push(() => {
       const progress = sceneProgress(slug, .92, 1.05);
       const values = motion.interviewFrame(progress);
@@ -214,7 +256,13 @@
         setVisual(item, value, 10 * (1 - value), .98 + .02 * value);
       });
       underlines.forEach((item, index) => {
-        setUnderline(item, motion.phase(progress, .7 + index * .1, .84 + index * .1));
+        const start = .7 + index * .1;
+        const underlineProgress = motion.phase(progress, start, .84 + index * .1);
+        setUnderline(item, underlineProgress);
+        if (!underlinePlayed[index] && progress >= start) {
+          underlinePlayed[index] = true;
+          playUnderlineSound(index);
+        }
       });
       setVisual(connector, values.connector, 10 * (1 - values.connector));
     });

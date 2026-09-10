@@ -8,14 +8,16 @@
   <meta name="description" content="小羽的故事。由原始 PSD 画面制作的竖屏滚动 H5。">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="./site-shell.css?v=20260908a">
+  <link rel="stylesheet" href="./site-audio.css?v=20260910a">
   <link rel="stylesheet" href="./styles-interactions.css?v=20260903e">
   <link rel="stylesheet" href="./extension.css?v=20260910g">
   <link rel="stylesheet" href="./mobile-pager.css?v=20260909c">
   <script src="./assets/manifest.js" defer></script>
   <script src="./site-shell.js?v=20260908a" defer></script>
+  <script src="./site-audio.js?v=20260910a" defer></script>
   <script src="./assets/interactions.js?v=20260903c" defer></script>
-  <script src="./interaction-core.js?v=20260903e" defer></script>
-  <script src="./app-interactions.js?v=20260910f" defer></script>
+  <script src="./interaction-core.js?v=20260910h" defer></script>
+  <script src="./app-interactions.js?v=20260910h" defer></script>
   <script src="./assets/extension/manifest.js?v=20260908d" defer></script>
   <script src="./assets/extension/charts-data.js?v=20260909e" defer></script>
   <script src="./assets/extension/map-data.js?v=20260908d" defer></script>
@@ -23,7 +25,7 @@
   <script src="./extension-core.js?v=20260908d" defer></script>
   <script src="./extension-charts.js?v=20260908d" defer></script>
   <script src="./extension-map.js?v=20260910g" defer></script>
-  <script src="./extension.js?v=20260910f" defer></script>
+  <script src="./extension.js?v=20260910h" defer></script>
   <script src="./mobile-pager.js?v=20260909e" defer></script>
 </head>
 <body>
@@ -37,6 +39,17 @@
       </div>
     </div>
   </div>
+  <audio id="h5-voice" src="./assets/audio/h5-voice-48s.mp3" preload="metadata" playsinline></audio>
+  <section id="h5-audio-controls" class="h5-audio-controls" aria-label="配音控制">
+    <button id="h5-audio-toggle" class="h5-audio-toggle" type="button" aria-label="播放配音">
+      <span id="h5-audio-icon" aria-hidden="true">▶</span>
+    </button>
+    <label class="h5-volume-control">
+      <span class="visually-hidden">配音音量</span>
+      <span class="volume-icon" aria-hidden="true">♪</span>
+      <input id="h5-audio-volume" type="range" min="0" max="1" step="0.05" value="0.72" aria-label="配音音量">
+    </label>
+  </section>
   <main id="page" aria-label="过早上网的一代"><div id="design-canvas"></div></main>
   <noscript>
     <div class="no-script">
