@@ -55,6 +55,52 @@
   will-change: opacity, transform;
 }
 
+.interview-underline {
+  --underline-progress: 0;
+  --underline-rotate: 0deg;
+  position: absolute;
+  z-index: 1400;
+  display: block;
+  height: 8px;
+  border-radius: 55% 45% 50% 50%;
+  background: #ef5758;
+  box-shadow: 0 1px 0 rgba(174, 43, 47, .22);
+  opacity: 0;
+  transform: rotate(var(--underline-rotate)) scaleX(var(--underline-progress));
+  transform-origin: left center;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.interview-scroll-guide {
+  position: absolute;
+  z-index: 1500;
+  left: 0;
+  top: 718px;
+  width: 750px;
+  color: #50617c;
+  font: 24px/1.25 "PingFang SC", "Microsoft YaHei", sans-serif;
+  letter-spacing: 2px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.interview-scroll-guide > span { display: block; }
+
+.interview-scroll-arrow {
+  margin-top: 2px;
+  font-size: 34px;
+  line-height: 1;
+  animation: interview-scroll-nudge 1.35s ease-in-out infinite;
+}
+
+@keyframes interview-scroll-nudge {
+  0%, 100% { transform: translateY(0); opacity: .62; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
 .extension-chart-shell {
   position: absolute;
   z-index: 600;

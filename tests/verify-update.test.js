@@ -20,6 +20,11 @@ assert.match(
   /scene\.ready\s*&&\s*!scene\.failed\s*\?\s*'layers'\s*:\s*'final'/,
   '动态素材未解码前保留静态图，完成后也不得换图造成闪动'
 );
+assert.match(app, /introductionMobileDuration\s*=\s*5200/, '小羽介绍页应放慢到约 5.2 秒');
+
+const extension = read('extension.js');
+assert.match(extension, /interview-underline/, '三位家长页应包含重点句划线动画');
+assert.match(extension, /向下滑动/, '采访引入页应包含向下滑动指引');
 
 assert.doesNotMatch(
   pager,

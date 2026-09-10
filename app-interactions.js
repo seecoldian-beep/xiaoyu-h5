@@ -14,6 +14,7 @@
   const qaProgress = qa && params.has('p') ? motion.clamp(Number(params.get('p'))) : null;
   const qaPhoneTime = qa && params.has('phone') ? Math.max(0, Math.min(4000, Number(params.get('phone')))) : null;
   const qaOpeningTime = qa && params.has('opening') ? Math.max(0, Math.min(3800, Number(params.get('opening')))) : null;
+  const introductionMobileDuration = 5200;
   const scenes = new Map();
   let pageScale = 1;
   let frame = 0;
@@ -197,8 +198,8 @@
       scene.section.dataset.state = complete ? 'complete' : 'titles-in';
       if (scene.ready && !complete && qaOpeningTime === null) schedule();
     } else if (config.type === 'introduction') {
-      // 小羽人物区域：介绍文字依次渐显，人物保持零位移。
-      [[86,0,.18],[87,.08,.28],[88,.18,.42],[89,.3,.58],[90,.45,.72],[85,.45,.95]].forEach(([id,a,b]) => {
+      // 小羽人物区域：留出阅读停顿，五段文字依次出现后人物再缓慢显现。
+      [[86,.02,.14],[87,.12,.25],[88,.24,.4],[89,.39,.58],[90,.57,.75],[85,.72,1]].forEach(([id,a,b]) => {
         setLayer(scene,id,motion.phase(p,a,b));
       });
       scene.section.dataset.state = p === 1 ? 'complete' : 'scrubbing';
@@ -345,7 +346,7 @@
       let p;
       if (mobilePage?.enabled) {
         p = pagedActive && scene.slug !== 'opening'
-          ? motion.clamp((now-mobilePage.startedAt)/1800)
+          ? motion.clamp((now-mobilePage.startedAt)/(scene.slug === 'introduction' ? introductionMobileDuration : 1800))
           : scene.progress;
       } else {
         p = scene.slug === 'opening' ? motion.clamp(scrollY/(innerHeight*.22)) : motion.scrollProgress({

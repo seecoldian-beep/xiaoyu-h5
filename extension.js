@@ -114,6 +114,27 @@
     return ids.map(id => addLayer(slug, id)).filter(Boolean);
   }
 
+  function addUnderline(slug, {x, y, width, rotate = 0}) {
+    const node = sceneNodes.get(slug);
+    if (!node?.stage) return null;
+    const underline = document.createElement('span');
+    underline.className = 'interview-underline';
+    underline.setAttribute('aria-hidden', 'true');
+    underline.style.left = `${x}px`;
+    underline.style.top = `${y}px`;
+    underline.style.width = `${width}px`;
+    underline.style.setProperty('--underline-rotate', `${rotate}deg`);
+    node.stage.append(underline);
+    return underline;
+  }
+
+  function setUnderline(element, progress) {
+    if (!element) return;
+    const value = motion.clamp(progress);
+    element.style.opacity = String(value);
+    element.style.setProperty('--underline-progress', String(value));
+  }
+
   function clickWithoutDrag(button, action) {
     let start = null;
     let dragged = false;
@@ -160,28 +181,40 @@
   }
 
   function buildInterviewIntro() {
-    if (!enhanceScene('interview-intro')) return;
+    const node = enhanceScene('interview-intro');
+    if (!node) return;
     const items = addLayers('interview-intro', [187, 236, 237]);
+    const guide = document.createElement('div');
+    guide.className = 'interview-scroll-guide';
+    guide.setAttribute('aria-hidden', 'true');
+    guide.innerHTML = '<span>向下滑动</span><span class="interview-scroll-arrow">↓</span>';
+    node.stage.append(guide);
     renderers.push(() => {
       const progress = sceneProgress('interview-intro', .9, .8);
       items.forEach((item, index) => {
         const value = motion.phase(progress, index * .22, .42 + index * .22);
         setVisual(item, value, 14 * (1 - value));
       });
+      setVisual(guide, motion.phase(progress, .62, .86), 8 * (1 - progress));
     });
   }
 
-  function buildInterview(slug, houseId, textIds, connectorId) {
+  function buildInterview(slug, houseId, textIds, connectorId, underlineSpecs = []) {
     if (!enhanceScene(slug)) return;
     const house = addLayer(slug, houseId);
     const text = addLayers(slug, textIds);
     const connector = addLayer(slug, connectorId);
+    const underlines = underlineSpecs.map(spec => addUnderline(slug, spec));
     renderers.push(() => {
-      const values = motion.interviewFrame(sceneProgress(slug, .92, 1.05));
+      const progress = sceneProgress(slug, .92, 1.05);
+      const values = motion.interviewFrame(progress);
       setVisual(house, values.house, 16 * (1 - values.house));
       text.forEach((item, index) => {
         const value = motion.phase(values.text, index * .11, Math.min(1, .7 + index * .11));
         setVisual(item, value, 10 * (1 - value), .98 + .02 * value);
+      });
+      underlines.forEach((item, index) => {
+        setUnderline(item, motion.phase(progress, .7 + index * .1, .84 + index * .1));
       });
       setVisual(connector, values.connector, 10 * (1 - values.connector));
     });
@@ -301,9 +334,18 @@
 
   if (!staticMode) {
     buildInterviewIntro();
-    buildInterview('interview-one', 240, [246, 242, 249], 248);
-    buildInterview('interview-two', 257, [258, 259, 260], 256);
-    buildInterview('interview-three', 261, [264, 265, 266], 263);
+    buildInterview('interview-one', 240, [246, 242, 249], 248, [
+      {x: 231, y: 803, width: 295, rotate: -.25},
+      {x: 119, y: 869, width: 508, rotate: .2}
+    ]);
+    buildInterview('interview-two', 257, [258, 259, 260], 256, [
+      {x: 139, y: 808, width: 483, rotate: .15},
+      {x: 276, y: 840, width: 212, rotate: -.35}
+    ]);
+    buildInterview('interview-three', 261, [264, 265, 266], 263, [
+      {x: 210, y: 855, width: 348, rotate: -.15},
+      {x: 232, y: 888, width: 302, rotate: .3}
+    ]);
     buildSimpleScene('data-transition', [270], [0]);
     buildCharts();
     buildPolicyMap();
