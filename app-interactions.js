@@ -160,8 +160,18 @@
     if (scene.preparing) return scene.preparing;
     scene.preparing = Promise.all(scene.images.map(async node => {
       if (!node.src) node.src = node.dataset.src;
-      if (node.decode) await node.decode();
-      else if (!node.complete) await new Promise((resolve, reject) => {
+      if (node.decode) {
+        try {
+          await node.decode();
+        } catch (error) {
+          // iOS 内嵌浏览器偶尔会拒绝离屏图片的 decode()，但图片本身仍可正常加载。
+          // 只有图片最终确实没有尺寸时才让场景退回静态图。
+          if (!node.complete) await new Promise((resolve, reject) => {
+            node.addEventListener('load', resolve, {once:true});
+            node.addEventListener('error', reject, {once:true});
+          });
+        }
+      } else if (!node.complete) await new Promise((resolve, reject) => {
         node.addEventListener('load', resolve, {once:true});
         node.addEventListener('error', reject, {once:true});
       });
@@ -180,6 +190,13 @@
     });
     return scene.preparing;
   }
+
+  // 开头五个分层场景在进入故事前一次性准备完成。这样即使用户连续快速翻页，
+  // 卧室、教室和放学路上也不会先露出包含全部气泡的静态兜底图。
+  const openingInteractionScenes = ['opening', 'introduction', 'bedroom', 'classroom', 'school-road'];
+  window.__H5_OPENING_INTERACTIONS_READY__ = Promise.all(
+    openingInteractionScenes.map(slug => prepare(scenes.get(slug)))
+  ).then(results => results.every(Boolean));
 
   function renderNarrative(scene, p, now) {
     scene.section.dataset.progress = p.toFixed(6);
@@ -350,7 +367,7 @@
         const mobileDuration = scene.slug === 'introduction'
           ? introductionMobileDuration
           : config.dialogues ? narrativeMobileDuration : 1800;
-        p = pagedActive && scene.slug !== 'opening'
+        p = pagedActive && scene.slug !== 'opening' && mobilePage.startedAt !== null
           ? motion.clamp((now-mobilePage.startedAt)/mobileDuration)
           : scene.progress;
       } else {
@@ -388,11 +405,17 @@
     mobilePage = {
       enabled: Boolean(detail.mobile),
       slug: detail.slug || '',
-      startedAt: Number(detail.startedAt) || performance.now()
+      // 当前场景的分层素材就绪后才开始计时，避免加载时间把动画在后台耗尽。
+      startedAt: null
     };
     const active = scenes.get(mobilePage.slug);
     if (active && !staticMode) {
-      prepare(active);
+      const activeSlug = active.slug;
+      prepare(active).then(ready => {
+        if (!ready || !mobilePage?.enabled || mobilePage.slug !== activeSlug) return;
+        mobilePage.startedAt = performance.now();
+        schedule();
+      });
       const activeIndex = manifest.scenes.findIndex(scene => scene.slug === active.slug);
       for (const offset of [-1, 1]) {
         const neighbor = manifest.scenes[activeIndex + offset];

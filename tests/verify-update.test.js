@@ -10,6 +10,7 @@ const hash = file => crypto.createHash('sha256')
   .digest('hex');
 
 const app = read('app-interactions.js');
+const shell = read('site-shell.js');
 const pager = read('mobile-pager.js');
 const chartData = read('assets/extension/charts-data.js');
 const mapData = read('assets/extension/map-update.js');
@@ -23,6 +24,11 @@ assert.match(
 assert.match(app, /introductionMobileDuration\s*=\s*5200/, '小羽介绍页应放慢到约 5.2 秒');
 assert.match(app, /narrativeMobileDuration\s*=\s*3600/, '卧室、教室和放学路对话应明显放慢');
 assert.match(app, /replyDuration\s*=\s*1100/, '点击后的回复气泡应以约 1.1 秒渐显');
+assert.match(app, /__H5_OPENING_INTERACTIONS_READY__\s*=\s*Promise\.all/, '进入故事前应预加载开头五个分层场景');
+assert.match(app, /try\s*{\s*await node\.decode\(\)/, 'iOS 图片解码失败时应允许回退到正常加载检测');
+assert.match(app, /mobilePage\.startedAt\s*=\s*performance\.now\(\)/, '移动端动画计时必须从当前场景素材就绪后开始');
+assert.match(app, /mobilePage\.startedAt\s*!==\s*null/, '素材未就绪时不得在后台耗尽场景动画');
+assert.match(shell, /await Promise\.race\(\[openingInteractionsReady, delay\(8000\)\]\)/, '加载页应等待开头交互素材准备完成');
 
 const extension = read('extension.js');
 assert.match(extension, /interview-underline/, '三位家长页应包含重点句划线动画');

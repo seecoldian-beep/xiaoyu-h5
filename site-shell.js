@@ -77,6 +77,10 @@
       Promise.all(criticalAssets.map(preload)),
       delay(8000)
     ]);
+    const openingInteractionsReady = window.__H5_OPENING_INTERACTIONS_READY__;
+    if (openingInteractionsReady) {
+      await Promise.race([openingInteractionsReady, delay(8000)]);
+    }
     await minimum;
     showProgress(100);
     root.classList.add('is-ready');
