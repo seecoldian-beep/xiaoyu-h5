@@ -223,7 +223,9 @@
       complete = values.dialogueTwo === 1;
       scene.section.dataset.state = complete ? 'complete' : reply.clicked ? 'reply-in' : available ? 'awaiting-reply' : p >= .58 ? 'dialogue-in' : p >= .34 ? 'characters-in' : p > 0 ? 'environment-in' : 'pending';
     }
-    scene.section.dataset.render = !scene.failed && !complete ? 'layers' : 'final';
+    // 完整静态图保留到动态素材全部解码完成；完成后继续显示同一套分层素材，
+    // 避免最后一帧换回压缩后的整图而产生轻微闪动。
+    scene.section.dataset.render = scene.ready && !scene.failed ? 'layers' : 'final';
   }
 
   /* 手机专用展示组：内部坐标和层级不变，只整体平移／等比缩放。 */
@@ -383,7 +385,14 @@
       startedAt: Number(detail.startedAt) || performance.now()
     };
     const active = scenes.get(mobilePage.slug);
-    if (active && !staticMode) prepare(active);
+    if (active && !staticMode) {
+      prepare(active);
+      const activeIndex = manifest.scenes.findIndex(scene => scene.slug === active.slug);
+      for (const offset of [-1, 1]) {
+        const neighbor = manifest.scenes[activeIndex + offset];
+        if (neighbor && scenes.has(neighbor.slug)) prepare(scenes.get(neighbor.slug));
+      }
+    }
     schedule();
   });
   function motionPreferenceChanged() {

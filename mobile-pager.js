@@ -31,6 +31,7 @@
   let touch = null;
   let wheelTotal = 0;
   let wheelTimer = 0;
+  let lockedScrollY = 0;
 
   const fade = document.createElement('div');
   fade.id = 'h5-page-fade';
@@ -101,7 +102,8 @@
 
   function jumpTo(item, direction) {
     setMode(item);
-    scrollTo(0, targetScroll(item, direction));
+    lockedScrollY = targetScroll(item, direction);
+    scrollTo(0, lockedScrollY);
     updateMasks();
     announce();
   }
@@ -109,16 +111,11 @@
   function turnTo(nextIndex, direction) {
     if (!enabled || transitioning || nextIndex < 0 || nextIndex >= pages.length) return;
     transitioning = true;
-    fade.classList.add('is-visible');
-    const delay = reduced.matches ? 0 : 300;
-    setTimeout(() => {
-      index = nextIndex;
-      jumpTo(current(), direction);
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        fade.classList.remove('is-visible');
-        setTimeout(() => { transitioning = false; }, delay);
-      }));
-    }, delay);
+    index = nextIndex;
+    jumpTo(current(), direction);
+    // 保留输入锁，确保一次手势只翻一页；不再覆盖全屏闪层。
+    const lockDuration = reduced.matches ? 120 : 420;
+    setTimeout(() => { transitioning = false; }, lockDuration);
   }
 
   function next() { turnTo(index+1, 1); }
@@ -228,11 +225,16 @@
   addEventListener('keydown', onKey);
   addEventListener('scroll', () => {
     clampInterviewScroll();
-    if (enabled && current().mode !== 'interviews') updateMasks();
+    if (enabled && current().mode !== 'interviews') {
+      // 点击按钮取得焦点时，Safari/Chrome 可能自动滚动页面；独立场景始终锁回页首。
+      if (Math.abs(scrollY-lockedScrollY) > 1) scrollTo(0, lockedScrollY);
+      updateMasks();
+    }
   }, {passive:true});
   addEventListener('resize', () => {
     if (!enabled) return;
-    scrollTo(0, targetScroll(current(), 1));
+    lockedScrollY = targetScroll(current(), 1);
+    scrollTo(0, lockedScrollY);
     updateMasks();
   }, {passive:true});
 

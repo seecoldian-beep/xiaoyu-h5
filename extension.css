@@ -130,6 +130,14 @@
   height: 330px;
 }
 
+.policy-world path {
+  fill: #d9dee3;
+}
+
+.policy-world path.policy-country {
+  fill: var(--policy-country-color) !important;
+}
+
 .policy-point {
   position: absolute;
   width: var(--extension-touch-size, 84px);

@@ -67,18 +67,45 @@
     return {show, hide};
   }
 
+  function paintPolicyCountry(svg, policy, x, y) {
+    if (!svg) return null;
+    const paths = Array.from(svg.querySelectorAll('path'));
+    let country = Number.isInteger(policy.pathIndex) ? paths[policy.pathIndex] : null;
+    const point = svg.createSVGPoint();
+    point.x = x;
+    point.y = y;
+    if (!country) {
+      const matches = paths.filter(path => {
+        try { return typeof path.isPointInFill === 'function' && path.isPointInFill(point); }
+        catch (error) { return false; }
+      });
+      country = matches.sort((a, b) => {
+        const aBox = a.getBBox();
+        const bBox = b.getBBox();
+        return aBox.width * aBox.height - bBox.width * bBox.height;
+      })[0];
+    }
+    if (!country) return null;
+    country.classList.add('policy-country');
+    country.style.setProperty('--policy-country-color', policy.color);
+    country.dataset.policyCountry = policy.name;
+    return country;
+  }
+
   function mount(root, markup, policies) {
     root.className = 'policy-map';
     const art = document.createElement('div');
     art.className = 'map-art';
     art.insertAdjacentHTML('afterbegin', markup);
     const svg = art.querySelector('svg');
+    if (svg) svg.classList.add('policy-world');
     const dots = document.createElement('div');
     dots.className = 'map-points';
     const sheet = createSheet();
 
     policies.forEach((policy, index) => {
       const [x, y] = project(policy.lng, policy.lat);
+      paintPolicyCountry(svg, policy, x, y);
       if (svg) {
         const marker = document.createElementNS(svg.namespaceURI, 'circle');
         marker.setAttribute('cx', x.toFixed(2));
