@@ -6,6 +6,7 @@
   const mobile = matchMedia('(max-width: 600px)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const params = new URLSearchParams(location.search);
+  const forceMobile = params.get('mobile') === '1';
   if (!page || params.get('qa') === '1' || params.get('mode') === 'static') return;
 
   const pages = [
@@ -195,7 +196,7 @@
   }
 
   function enable() {
-    if (enabled || !mobile.matches) return;
+    if (enabled || (!forceMobile && !mobile.matches)) return;
     enabled = true;
     root.classList.add('h5-mobile-pager');
     index = Math.max(0, pages.findIndex(item => {
@@ -238,8 +239,10 @@
     updateMasks();
   }, {passive:true});
 
-  if (mobile.addEventListener) mobile.addEventListener('change', event => event.matches ? enable() : disable());
-  else mobile.addListener(event => event.matches ? enable() : disable());
+  if (!forceMobile) {
+    if (mobile.addEventListener) mobile.addEventListener('change', event => event.matches ? enable() : disable());
+    else mobile.addListener(event => event.matches ? enable() : disable());
+  }
   enable();
 
   window.__H5_MOBILE_PAGER__ = {pages, get index(){return index;}, next, previous};

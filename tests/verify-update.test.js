@@ -24,7 +24,9 @@ assert.match(
 assert.match(app, /introductionMobileDuration\s*=\s*5200/, '小羽介绍页应放慢到约 5.2 秒');
 assert.match(app, /narrativeMobileDuration\s*=\s*3600/, '卧室、教室和放学路对话应明显放慢');
 assert.match(app, /replyDuration\s*=\s*1100/, '点击后的回复气泡应以约 1.1 秒渐显');
-assert.match(app, /__H5_OPENING_INTERACTIONS_READY__\s*=\s*Promise\.all/, '进入故事前应预加载开头五个分层场景');
+assert.match(app, /!node\.getAttribute\('src'\)/, 'Safari 中必须按 src 属性而不是 node.src 属性判断延迟图片');
+assert.match(app, /__H5_OPENING_INTERACTIONS_READY__\s*=\s*prepare\(scenes\.get\('opening'\)\)/, '加载页只等待首屏，避免手机同时解码全部场景');
+assert.doesNotMatch(app, /openingInteractionScenes\.map/, '手机端不得并发解码开头五个透明 PNG 场景');
 assert.match(app, /try\s*{\s*await node\.decode\(\)/, 'iOS 图片解码失败时应允许回退到正常加载检测');
 assert.match(app, /mobilePage\.startedAt\s*=\s*performance\.now\(\)/, '移动端动画计时必须从当前场景素材就绪后开始');
 assert.match(app, /mobilePage\.startedAt\s*!==\s*null/, '素材未就绪时不得在后台耗尽场景动画');
@@ -51,6 +53,7 @@ assert.match(
   /Math\.abs\(scrollY-lockedScrollY\)\s*>\s*1/,
   '独立翻页场景必须抵消按钮聚焦造成的自动滚动'
 );
+assert.match(pager, /forceMobile\s*=\s*params\.get\('mobile'\)\s*===\s*'1'/, '应支持强制进入手机翻页路径进行验收');
 
 assert.equal(
   hash('assets/extension/charts/screen-time.svg'),

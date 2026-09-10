@@ -160,7 +160,10 @@
   function prepare(scene) {
     if (scene.preparing) return scene.preparing;
     scene.preparing = Promise.all(scene.images.map(async node => {
-      if (!node.src) node.src = node.dataset.src;
+      // 不读取 node.src 来判断：部分 iOS WebView 会把“无 src”解析成当前页面 URL，
+      // 导致真正的图片地址永远没有写入，整个场景只能显示静态兜底图。
+      const deferredSrc = node.dataset.src;
+      if (deferredSrc && !node.getAttribute('src')) node.setAttribute('src', deferredSrc);
       if (node.decode) {
         try {
           await node.decode();
@@ -192,12 +195,9 @@
     return scene.preparing;
   }
 
-  // 开头五个分层场景在进入故事前一次性准备完成。这样即使用户连续快速翻页，
-  // 卧室、教室和放学路上也不会先露出包含全部气泡的静态兜底图。
-  const openingInteractionScenes = ['opening', 'introduction', 'bedroom', 'classroom', 'school-road'];
-  window.__H5_OPENING_INTERACTIONS_READY__ = Promise.all(
-    openingInteractionScenes.map(slug => prepare(scenes.get(slug)))
-  ).then(results => results.every(Boolean));
+  // 加载页只等待首屏；后续场景沿用“当前页 + 相邻页”预取，避免 iOS WebView
+  // 同时解码五个场景的透明 PNG 而触发内存回收或解码失败。
+  window.__H5_OPENING_INTERACTIONS_READY__ = prepare(scenes.get('opening'));
 
   function renderNarrative(scene, p, now) {
     scene.section.dataset.progress = p.toFixed(6);
