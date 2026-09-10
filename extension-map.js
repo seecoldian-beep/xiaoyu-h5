@@ -15,58 +15,6 @@
     return [WIDTH / 2 + x * SCALE, HEIGHT / 2 - y * SCALE];
   }
 
-  function createSheet() {
-    const backdrop = document.createElement('div');
-    backdrop.className = 'sheet-backdrop';
-    const sheet = document.createElement('section');
-    sheet.className = 'policy-sheet';
-    sheet.setAttribute('role', 'dialog');
-    sheet.setAttribute('aria-modal', 'true');
-    sheet.setAttribute('aria-labelledby', 'policy-sheet-title');
-
-    const close = document.createElement('button');
-    close.className = 'sheet-close';
-    close.type = 'button';
-    close.setAttribute('aria-label', '关闭政策详情');
-    close.textContent = '×';
-    const title = document.createElement('h2');
-    title.id = 'policy-sheet-title';
-    const status = document.createElement('p');
-    status.className = 'sheet-status';
-    const copy = document.createElement('p');
-    copy.className = 'sheet-copy';
-    sheet.append(close, title, status, copy);
-    document.body.append(backdrop, sheet);
-
-    let returnFocus = null;
-    let savedScrollY = 0;
-    function hide() {
-      sheet.classList.remove('is-open');
-      backdrop.classList.remove('is-open');
-      document.body.style.overflow = '';
-      window.scrollTo(0, savedScrollY);
-      if (returnFocus) returnFocus.focus({preventScroll: true});
-    }
-    function show(policy, trigger) {
-      returnFocus = trigger;
-      savedScrollY = window.scrollY;
-      title.textContent = policy.name;
-      status.textContent = policy.levelText;
-      status.style.color = policy.color;
-      copy.textContent = policy.desc;
-      backdrop.classList.add('is-open');
-      sheet.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-      close.focus({preventScroll: true});
-    }
-    close.addEventListener('click', hide);
-    backdrop.addEventListener('click', hide);
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && sheet.classList.contains('is-open')) hide();
-    });
-    return {show, hide};
-  }
-
   function paintPolicyCountry(svg, policy, x, y) {
     if (!svg) return null;
     const paths = Array.from(svg.querySelectorAll('path'));
@@ -101,7 +49,6 @@
     if (svg) svg.classList.add('policy-world');
     const dots = document.createElement('div');
     dots.className = 'map-points';
-    const sheet = createSheet();
 
     policies.forEach((policy, index) => {
       const [x, y] = project(policy.lng, policy.lat);
@@ -118,9 +65,9 @@
         marker.style.opacity = '0';
         svg.append(marker);
       }
-      const button = document.createElement('button');
+      const button = document.createElement('a');
       button.className = 'policy-point';
-      button.type = 'button';
+      button.href = `./policy-map.html?country=${encodeURIComponent(policy.name)}`;
       button.style.left = `${x}px`;
       button.style.top = `${y}px`;
       button.style.setProperty('--point-color', policy.color);
@@ -128,8 +75,7 @@
       button.style.transform = 'scale(.72)';
       button.dataset.index = String(index);
       button.title = policy.name;
-      button.setAttribute('aria-label', `查看${policy.name}的政策：${policy.levelText}`);
-      button.addEventListener('click', () => sheet.show(policy, button));
+      button.setAttribute('aria-label', `在完整地图中查看${policy.name}的政策：${policy.levelText}`);
       dots.append(button);
     });
     art.append(dots);
@@ -146,9 +92,10 @@
       item.textContent = policy.levelText;
       legend.append(item);
     });
-    const instruction = document.createElement('p');
+    const instruction = document.createElement('a');
     instruction.className = 'map-instruction';
-    instruction.textContent = '点击地图上的国家查看政策详情';
+    instruction.href = './policy-map.html';
+    instruction.textContent = '点击国家查看详情，或打开完整政策地图 →';
     const fallback = document.createElement('div');
     fallback.className = 'policy-fallback';
     fallback.textContent = policies.map(policy => `${policy.name}：${policy.levelText}。${policy.desc}`).join(' ');

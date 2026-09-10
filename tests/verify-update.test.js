@@ -60,5 +60,8 @@ for (const color of ['#2c5c8a', '#4f7ba4', '#7aa0c4', '#a9c2d9']) {
   assert.ok(mapData.includes(color), `地图应使用新版政策色 ${color}`);
 }
 assert.match(mapCode, /isPointInFill/, '地图应把政策颜色应用到对应国家轮廓');
+assert.match(mapCode, /policy-map\.html\?country=/, 'H5 地图国家点应链接到完整地图页');
+assert.doesNotMatch(mapCode, /policy-sheet/, 'H5 地图不得再创建会滞留的固定浮窗');
+assert.ok(fs.existsSync(path.join(root, 'policy-map.html')), '应提供独立完整政策地图页');
 
 console.log('H5 update checks passed.');

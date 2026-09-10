@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#778596">
+  <title>全球未成年人社交媒体管控政策地图</title>
+  <meta name="description" content="点击地图或国家名称，查看各国未成年人社交媒体管控政策。">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./policy-map-page.css?v=20260910a">
+  <script src="./assets/extension/map-update.js?v=20260909e" defer></script>
+  <script src="./policy-map-page.js?v=20260910a" defer></script>
+</head>
+<body>
+  <main class="policy-page">
+    <header class="policy-header">
+      <button id="map-back" class="back-link" type="button" aria-label="返回过早上网的一代">← 返回 H5</button>
+      <p class="eyebrow">GLOBAL POLICY MAP</p>
+      <h1>全球未成年人<br>社交媒体管控政策地图</h1>
+      <p class="subtitle">点击地图上的国家或下方国家名称查看政策详情</p>
+    </header>
+
+    <section class="map-card" aria-label="全球政策地图">
+      <div id="standalone-map" class="standalone-map" aria-live="polite">
+        <p class="map-loading">地图加载中…</p>
+      </div>
+      <div id="map-legend" class="standalone-legend" aria-label="政策状态图例"></div>
+    </section>
+
+    <nav id="country-list" class="country-list" aria-label="选择国家"></nav>
+
+    <article id="policy-detail" class="policy-detail" tabindex="-1">
+      <p class="detail-kicker">POLICY PROFILE</p>
+      <h2 id="detail-title">请选择一个国家</h2>
+      <p id="detail-status" class="detail-status">地图中标记了 8 个国家</p>
+      <p id="detail-copy" class="detail-copy">点击地图上的圆点或国家名称，即可在这里查看政策内容。</p>
+    </article>
+  </main>
+</body>
+</html>
